@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CanvsViewDemo</string>
+
+    <string name="str_lineChat">折线绘制</string>
+    <string name="str_ColumnChat">柱状图绘制</string>
+    <string name="str_webService">WebSerVice测试</string>
+    <string name="str_webStart">开始WebService请求</string>
+</resources>
