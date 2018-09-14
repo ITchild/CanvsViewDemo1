@@ -1,14 +1,14 @@
 package com.fei.canvsviewdemo.activity;
 
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.fei.canvsviewdemo.R;
-import com.fei.canvsviewdemo.base.BaseAc;
 import com.fei.canvsviewdemo.bean.LowStartBean;
+import com.fei.feilibs_1_0_0.base.ac.BaseActivity;
+import com.fei.feilibs_1_0_0.bean.RxBusMsgBean;
+import com.fei.feilibs_1_0_0.rxbus.RxBus;
 
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
@@ -17,31 +17,36 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 
-public class WebServiceActivity extends BaseAc implements View.OnClickListener {
+public class WebServiceActivity extends BaseActivity implements View.OnClickListener {
     private final int MSG = 1000;
     private TextView webService_result;//显示webSerVice的结果
     private String result;
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case MSG:
-                    webService_result.setText(result);
-                    break;
-            }
-        }
-    };
+
     private Runnable mRunnable = new Runnable() {
         @Override
         public void run() {
             getRemoteInfo();
-            mHandler.sendEmptyMessage(MSG);
+            RxBusMsgBean bean = new RxBusMsgBean();
+            bean.setWhat(MSG);
+            RxBus.getInstance().post(bean);
         }
     };
 
     @Override
-    protected int initLatout() {
+    protected void doRxBus(RxBusMsgBean bean) {
+        super.doRxBus(bean);
+        if(null == bean){
+            return;
+        }
+        switch (bean.getWhat()){
+            case MSG :
+                webService_result.setText(result);
+                break;
+        }
+    }
+
+    @Override
+    protected int initLayout() {
         return R.layout.activity_webservice;
     }
 
@@ -79,6 +84,9 @@ public class WebServiceActivity extends BaseAc implements View.OnClickListener {
         String WSDL_URI = "http://www.zqzjz.cn:10002/zjjc/services/webCallService?wsdl";//wsdl 的uri
         String namespace = "http://ws.whrsm.com";////namespace
         String methodName = "sendLowStartMsg";//要调用的方法名称
+//        String WSDL_URI = "http://192.168.3.151:8088/mockmgeEnvelopsvrSoapBinding?WSDL";//wsdl 的uri
+//        String namespace = "http://ws.whrsm.com";////namespace
+//        String methodName = "sendLowStartMsg";//要调用的方法名称
 
         LowStartBean bean = new LowStartBean();
         SoapObject request = new SoapObject(namespace, methodName);
@@ -94,11 +102,13 @@ public class WebServiceActivity extends BaseAc implements View.OnClickListener {
         HttpTransportSE httpTransportSE = new HttpTransportSE(WSDL_URI);
         try {
             httpTransportSE.call(null, envelope);//调用
+            httpTransportSE.getServiceConnection();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         }
+        Log.d("fei", envelope.bodyIn.toString());
         // 获取返回的数据
         SoapObject object = (SoapObject) envelope.bodyIn;
         // 获取返回的结果
