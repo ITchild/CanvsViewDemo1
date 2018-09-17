@@ -85,7 +85,7 @@ public class WebServiceActivity extends BaseActivity implements View.OnClickList
         String namespace = "http://ws.whrsm.com";////namespace
         String methodName = "sendLowStartMsg";//要调用的方法名称
 //        String WSDL_URI = "http://192.168.3.151:8088/mockmgeEnvelopsvrSoapBinding?WSDL";//wsdl 的uri
-//        String namespace = "http://ws.whrsm.com";////namespace
+//        String namespace = "http://ws.whrsm.com";//namespace
 //        String methodName = "sendLowStartMsg";//要调用的方法名称
 
         LowStartBean bean = new LowStartBean();
@@ -97,12 +97,12 @@ public class WebServiceActivity extends BaseActivity implements View.OnClickList
         //创建SoapSerializationEnvelope 对象，同时指定soap版本号(之前在wsdl中看到的)
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapSerializationEnvelope.VER11);
         envelope.bodyOut = request;//由于是发送请求，所以是设置bodyOut
-        envelope.dotNet = true;//由于是.net开发的webservice，所以这里要设置为true
+        envelope.dotNet = false;//由于是.net开发的webservice，所以这里要设置为true
 
         HttpTransportSE httpTransportSE = new HttpTransportSE(WSDL_URI);
         try {
             httpTransportSE.call(null, envelope);//调用
-            httpTransportSE.getServiceConnection();
+//            httpTransportSE.getServiceConnection();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (XmlPullParserException e) {

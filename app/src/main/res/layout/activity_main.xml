@@ -15,30 +15,32 @@
 
         <Button
             android:id="@+id/main_lineChart_bt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="@string/str_lineChat"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
+            style="@style/MainButtonType"
+            android:text="@string/str_lineChat" />
+
         <Button
             android:id="@+id/main_columnChart_bt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="@string/str_ColumnChat"
-            android:textColor="@color/black"
+            style="@style/MainButtonType"
             android:layout_below="@id/main_lineChart_bt"
-            android:textSize="20dp" />
+            android:text="@string/str_ColumnChat" />
+
         <Button
             android:id="@+id/main_webService_bt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="@string/str_webService"
-            android:textColor="@color/black"
+            style="@style/MainButtonType"
             android:layout_below="@id/main_columnChart_bt"
-            android:textSize="20dp" />
+            android:text="@string/str_webService" />
+
+        <Button
+            android:id="@+id/main_dialogAc_bt"
+            style="@style/MainButtonType"
+            android:layout_below="@id/main_webService_bt"
+            android:text="@string/str_dialogAc" />
+
+        <Button
+            android:id="@+id/main_TabAc_bt"
+            style="@style/MainButtonType"
+            android:layout_below="@id/main_webService_bt"
+            android:text="@string/str_TabAc" />
 
     </RelativeLayout>
 </ScrollView>

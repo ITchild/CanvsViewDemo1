@@ -5,4 +5,6 @@
     <string name="str_ColumnChat">柱状图绘制</string>
     <string name="str_webService">WebSerVice测试</string>
     <string name="str_webStart">开始WebService请求</string>
+    <string name="str_dialogAc">Dialog类型的Activity</string>
+    <string name="str_TabAc">Activity类型的选项卡</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.fei.canvsviewdemo.activity;
 
+import android.app.TabActivity;
 import android.view.View;
 
 import com.fei.canvsviewdemo.R;
@@ -32,6 +33,8 @@ public class MainActivity extends BaseAc implements View.OnClickListener{
         findView(R.id.main_lineChart_bt).setOnClickListener(this);
         findView(R.id.main_columnChart_bt).setOnClickListener(this);
         findView(R.id.main_webService_bt).setOnClickListener(this);
+        findView(R.id.main_dialogAc_bt).setOnClickListener(this);
+        findView(R.id.main_TabAc_bt).setOnClickListener(this);
     }
 
     @Override
@@ -45,6 +48,12 @@ public class MainActivity extends BaseAc implements View.OnClickListener{
                 break;
             case R.id.main_webService_bt :
                 JumpToAc(WebServiceActivity.class);
+                break;
+            case R.id.main_dialogAc_bt:
+                JumpToAc(DialogActivity.class);
+                break;
+            case R.id.main_TabAc_bt :
+                JumpToAc(TabActivity.class);
                 break;
         }
     }

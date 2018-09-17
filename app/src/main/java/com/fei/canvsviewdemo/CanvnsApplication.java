@@ -9,7 +9,6 @@ public class CanvnsApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-
     }
 
     @Override
