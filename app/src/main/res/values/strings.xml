@@ -7,4 +7,6 @@
     <string name="str_webStart">开始WebService请求</string>
     <string name="str_dialogAc">Dialog类型的Activity</string>
     <string name="str_TabAc">Activity类型的选项卡</string>
+    <string name="str_CarmerAc">摄像头的调用并实时展示</string>
+    <string name="str_showVodieAc">获取视频地址的Activity</string>
 </resources>

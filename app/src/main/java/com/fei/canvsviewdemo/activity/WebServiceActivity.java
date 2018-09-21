@@ -81,7 +81,7 @@ public class WebServiceActivity extends BaseActivity implements View.OnClickList
     }
 
     public String getRemoteInfo() {
-        String WSDL_URI = "http://www.zqzjz.cn:10002/zjjc/services/webCallService?wsdl";//wsdl 的uri
+        String WSDL_URI = "http://www.zqzjz.cn:10002/zjjc/services/webCallService";//wsdl 的uri
         String namespace = "http://ws.whrsm.com";////namespace
         String methodName = "sendLowStartMsg";//要调用的方法名称
 //        String WSDL_URI = "http://192.168.3.151:8088/mockmgeEnvelopsvrSoapBinding?WSDL";//wsdl 的uri
@@ -90,8 +90,9 @@ public class WebServiceActivity extends BaseActivity implements View.OnClickList
 
         LowStartBean bean = new LowStartBean();
         SoapObject request = new SoapObject(namespace, methodName);
-        request.addProperty("account", "3htest");
-        request.addProperty("pwd", "12345678");
+        request.addProperty("account", "whrsm");
+        request.addProperty("pwd", "whrsm");
+        Log.i("fei",bean.getJson());
         request.addProperty("lowStartjson", bean.getJson());
 
         //创建SoapSerializationEnvelope 对象，同时指定soap版本号(之前在wsdl中看到的)

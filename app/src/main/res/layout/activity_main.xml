@@ -42,5 +42,18 @@
             android:layout_below="@id/main_webService_bt"
             android:text="@string/str_TabAc" />
 
+        <Button
+            android:id="@+id/main_Carmer_bt"
+            style="@style/MainButtonType"
+            android:layout_below="@id/main_TabAc_bt"
+            android:text="@string/str_CarmerAc">
+        </Button>
+        <Button
+            android:id="@+id/main_showVodie_bt"
+            style="@style/MainButtonType"
+            android:layout_below="@id/main_TabAc_bt"
+            android:text="@string/str_showVodieAc">
+        </Button>
+
     </RelativeLayout>
 </ScrollView>
